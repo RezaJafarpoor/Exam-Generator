@@ -3,11 +3,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExamGenerator.Infrastructure.Persistence;
 
-internal class ExamGeneratorDbContext(DbContextOptions options) : DbContext
+internal class ExamGeneratorDbContext : DbContext
 {
-
-    internal DbSet<Customer> Customers;
-    internal DbSet<Exam> Exams;
+    public ExamGeneratorDbContext(DbContextOptions options) : base(options)
+    {
+        
+    }
+    internal DbSet<Customer> Customers{ get; set; }
+    internal DbSet<Exam> Exams { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
