@@ -3,12 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExamGenerator.Infrastructure.Persistence;
 
-internal class ExamGeneratorDbContext : DbContext
+internal class ExamGeneratorDbContext(DbContextOptions<ExamGeneratorDbContext> options) : DbContext(options)
 {
-    public ExamGeneratorDbContext(DbContextOptions options) : base(options)
-    {
-        
-    }
     internal DbSet<Customer> Customers{ get; set; }
     internal DbSet<Exam> Exams { get; set; }
 
